@@ -22,7 +22,7 @@ body {
     border: .25vmin solid black;
 }
 
-.snake {
+.food {
     background-color: rgb(247, 220, 99);
     border: .25vmin solid black ;
 }
