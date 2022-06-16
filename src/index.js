@@ -1,5 +1,7 @@
 import './style.css'
 import { snakeSpeed, update as updateSnake, draw as drawSnake } from './snake';
+import { update as updateFood, draw as drawFood } from './food';
+
 
 const body = document.querySelector('body');
 const gameBoard = document.createElement('div');
@@ -26,10 +28,12 @@ function main(currentTime) {
 window.requestAnimationFrame(main);
 
 function update() {
+    updateFood()
     updateSnake()
 }
 
 function draw() {
     gameBoard.innerHTML = '';
+    drawFood(gameBoard)
     drawSnake(gameBoard)
 }
