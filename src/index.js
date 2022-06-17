@@ -1,4 +1,5 @@
 import './style.css'
+import { SNAKE_SPEED, update as updateSnake, draw as drawSnake } from './snake';
 
 const body = document.querySelector('body');
 const gameBoard = document.createElement('div');
@@ -9,12 +10,12 @@ body.appendChild(gameBoard);
 //-------------------------------------------------------
 
 let lastRenderTime = 0;
-const SNAKE_SPEED = 2;
+
 
 function main(currentTime) {
     window.requestAnimationFrame(main)
 
-    const secondsSinceLastRender = currentTime - lastRenderTime;
+    const secondsSinceLastRender = (currentTime - lastRenderTime) / 1000;
     if(secondsSinceLastRender < 1 / SNAKE_SPEED) return
 
     lastRenderTime = currentTime
@@ -27,9 +28,10 @@ function main(currentTime) {
 window.requestAnimationFrame(main)
 
 function update( ) {
-
+    updateSnake()
 }
 
 function draw() {
-
+    gameBoard.innerHTML = '';
+    drawSnake(gameBoard)
 }
