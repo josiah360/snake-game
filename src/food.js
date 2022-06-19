@@ -17,3 +17,11 @@ export function draw(gameBody) {
     foodElement.style.gridRowStart = food.y;
     gameBody.appendChild(foodElement)
 }
+
+function getRandomFoodPosition() {
+    let randomFoodPosition
+    while(randomFoodPosition == null || onSnake(randomFoodPosition)) {
+        randomFoodPosition = randomGridPosition()
+    }
+    return randomFoodPosition
+}
