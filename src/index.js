@@ -1,4 +1,5 @@
 import './style.css';
+import { SNAKE_SPEED, update as updateSnake, draw as drawSnake } from './snake';
 
 const body = document.querySelector('body');
 const gameBoard = document.createElement('div');
@@ -8,7 +9,6 @@ body.appendChild(gameBoard);
 //--------------------------------------------------
 
 let lastRenderTime = 0;
-const SNAKE_SPEED = 2;
 
 function main(currentTime) {
     window.requestAnimationFrame(main)
@@ -27,9 +27,9 @@ function main(currentTime) {
 window.requestAnimationFrame(main)
 
 function update() {
-
+    updateSnake()
 }
 
 function draw() {
-    
+    drawSnake(gameBoard)
 }
