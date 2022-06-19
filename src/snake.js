@@ -1,6 +1,7 @@
 import { getInputDirection } from "./input";
 
 export const SNAKE_SPEED = 2;
+let newSegments = 0;
 const snakeBody = [
     {x: 11, y: 11},
     {x: 12, y: 11},
@@ -8,6 +9,8 @@ const snakeBody = [
 ]
 
 export function update() {
+    addSegment()
+    
     const inputDirection = getInputDirection()
 
     for(let i = snakeBody.length - 2; i >= 0; i--) {
@@ -26,4 +29,25 @@ export function draw(gameBody) {
         snakeElement.style.gridRowStart = segment.y;
         gameBody.appendChild(snakeElement)
     })
+}
+
+export function onSnake(position) {
+    return snakeBody.some(segment => {
+        return equalPosition(position, segment)
+    })
+}
+
+export function expandSnake(amount) {
+    newSegments += amount
+}
+
+function equalPosition(pos1, pos2) {
+    return pos1.x === pos2.x && pos1.y === pos2.y
+}
+
+function addSegment() {
+    for(let i = 0; i < newSegments; i++) {
+        snakeBody.push({...snakeBody[snakeBody.length - 1]})
+    }
+    newSegments = 0;
 }
